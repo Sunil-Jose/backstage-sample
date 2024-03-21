@@ -12,7 +12,7 @@ export const CreatePage = () => {
                 <Card>
                     <CardContent>
                         <Grid>
-                            <Grid item xs={8} md={6}>
+                            <Grid item xs={12}>
                                 <TextField
                                     required
                                     id="name"
