@@ -69,3 +69,5 @@ apiVersion: functionality.tw/v1beta3
 kind: Functionality
 metadata:
   name: func1
+spec:
+  owner: guests
