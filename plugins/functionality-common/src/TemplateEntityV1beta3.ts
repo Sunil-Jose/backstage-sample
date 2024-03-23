@@ -3,7 +3,6 @@ import {
     entityKindSchemaValidator,
     KindValidator,
   } from '@backstage/catalog-model';
-  import { JsonObject } from '@backstage/types';
   import schema from './Template.v1beta3.schema.json';
   
   /**
@@ -37,15 +36,6 @@ import {
     };
   }
 
-  /**
-   *  Access control properties for parts of a template.
-   *
-   * @public
-   */
-  export interface FunctionalityPermissionsV1beta3 extends JsonObject {
-    tags?: string[];
-  }
-  
   const validator = entityKindSchemaValidator(schema);
   
   /**
