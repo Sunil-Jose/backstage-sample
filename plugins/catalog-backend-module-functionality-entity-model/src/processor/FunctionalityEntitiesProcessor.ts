@@ -4,6 +4,8 @@ import {
     parseEntityRef,
     RELATION_OWNED_BY,
     RELATION_OWNER_OF,
+    RELATION_PART_OF,
+    RELATION_HAS_PART,
   } from '@backstage/catalog-model';
   import {
     CatalogProcessor,
@@ -51,34 +53,68 @@ import {
       ) {
         const template = entity as FunctionalityEntityV1beta3;
   
-        const target = template.spec.owner;
-        if (target) {
-          const targetRef = parseEntityRef(target, {
-            defaultKind: 'Group',
-            defaultNamespace: selfRef.namespace,
-          });
-          emit(
-            processingResult.relation({
-              source: selfRef,
-              type: RELATION_OWNED_BY,
-              target: {
-                kind: targetRef.kind,
-                namespace: targetRef.namespace,
-                name: targetRef.name,
-              },
-            }),
-          );
-          emit(
-            processingResult.relation({
-              source: {
-                kind: targetRef.kind,
-                namespace: targetRef.namespace,
-                name: targetRef.name,
-              },
-              type: RELATION_OWNER_OF,
-              target: selfRef,
-            }),
-          );
+        if (template.spec) {
+          // Owner entity ref resolution
+          const target = template.spec.owner;
+          if (target) {
+            const ownerEntityRef = parseEntityRef(target, {
+              defaultKind: 'Group',
+              defaultNamespace: selfRef.namespace,
+            });
+            emit(
+              processingResult.relation({
+                source: selfRef,
+                type: RELATION_OWNED_BY,
+                target: {
+                  kind: ownerEntityRef.kind,
+                  namespace: ownerEntityRef.namespace,
+                  name: ownerEntityRef.name,
+                },
+              }),
+            );
+            emit(
+              processingResult.relation({
+                source: {
+                  kind: ownerEntityRef.kind,
+                  namespace: ownerEntityRef.namespace,
+                  name: ownerEntityRef.name,
+                },
+                type: RELATION_OWNER_OF,
+                target: selfRef,
+              }),
+            );
+          }
+
+          // components entity ref resolution
+          const component = template.spec.components;
+          if (component) {
+            const componentEntityRef = parseEntityRef(component, {
+              defaultKind: 'Component',
+              defaultNamespace: selfRef.namespace,
+            });
+            emit(
+              processingResult.relation({
+                source: selfRef,
+                type: RELATION_HAS_PART,
+                target: {
+                  kind: componentEntityRef.kind,
+                  namespace: componentEntityRef.namespace,
+                  name: componentEntityRef.name,
+                },
+              })
+            );
+            emit(
+              processingResult.relation({
+                source: {
+                  kind: componentEntityRef.kind,
+                  namespace: componentEntityRef.namespace,
+                  name: componentEntityRef.name,
+                },
+                type: RELATION_PART_OF,
+                target: selfRef,
+              }),
+            );
+          }
         }
       }
   

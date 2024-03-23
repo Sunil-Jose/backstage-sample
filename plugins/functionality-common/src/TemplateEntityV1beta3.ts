@@ -24,11 +24,16 @@ import {
     /**
      * The specification of the Functionality Entity
      */
-    spec: {
+    spec?: {
       /**
        * The owner entityRef of the FunctionalityEntity
        */
       owner?: string;
+
+      /**
+       * The components that are involved in implementing this functionality
+       */
+      components?: string;
     };
   }
 

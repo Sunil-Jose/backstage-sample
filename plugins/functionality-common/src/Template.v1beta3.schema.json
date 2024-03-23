@@ -13,7 +13,8 @@
           "tags": ["recommended"]
         },
         "spec": {
-          "owner": "artist-relations-team"
+          "owner": "artist-relations-team",
+          "components": "funcA"
         }
       }
     ],
@@ -36,6 +37,11 @@
               "owner": {
                 "type": "string",
                 "description": "The user (or group) owner of the functionality",
+                "minLength": 1
+              },
+              "components": {
+                "type": "string",
+                "description": "The components that are part of implementing this functionality",
                 "minLength": 1
               }
             }
