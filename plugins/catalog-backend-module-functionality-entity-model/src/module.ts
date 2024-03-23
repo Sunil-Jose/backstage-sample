@@ -1,7 +1,4 @@
-import {
-  coreServices,
-  createBackendModule,
-} from '@backstage/backend-plugin-api';
+import { createBackendModule } from '@backstage/backend-plugin-api';
 import { catalogProcessingExtensionPoint } from '@backstage/plugin-catalog-node/alpha';
 import { FunctionalityEntitiesProcessor } from './processor';
 
@@ -16,12 +13,10 @@ export const catalogModuleFunctionalityEntityModel = createBackendModule({
   moduleId: 'functionality-entity-model',
   register(env) {
     env.registerInit({
-      deps: { 
+      deps: {
         catalog: catalogProcessingExtensionPoint,
-        logger: coreServices.logger,
       },
-      async init({ catalog, logger }) {
-        logger.info("=============SUCCESS-it's-recognised==================");
+      async init({ catalog }) {
         catalog.addProcessor(new FunctionalityEntitiesProcessor());
       },
     });
