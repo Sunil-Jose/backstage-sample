@@ -4,65 +4,16 @@
     "description": "A Functionality is a representation of a ???",
     "examples": [
       {
-        "apiVersion": "scaffolder.backstage.io/v1beta3",
-        "kind": "Template",
+        "apiVersion": "functionality.tw/v1beta3",
+        "kind": "Functionality",
         "metadata": {
-          "name": "react-ssr-template",
-          "title": "React SSR Template",
-          "description": "Next.js application skeleton for creating isomorphic web applications.",
-          "tags": ["recommended", "react"]
+          "name": "functionalityA",
+          "title": "Functionality A",
+          "description": "Simple Functionality",
+          "tags": ["recommended"]
         },
         "spec": {
-          "owner": "artist-relations-team",
-          "type": "website",
-          "parameters": {
-            "required": ["name", "description", "repoUrl"],
-            "backstage:permissions": {
-              "tags": ["one", "two"]
-            },
-            "properties": {
-              "name": {
-                "title": "Name",
-                "type": "string",
-                "description": "Unique name of the component"
-              },
-              "description": {
-                "title": "Description",
-                "type": "string",
-                "description": "Description of the component"
-              },
-              "repoUrl": {
-                "title": "Pick a repository",
-                "type": "string",
-                "ui:field": "RepoUrlPicker"
-              }
-            }
-          },
-          "steps": [
-            {
-              "id": "fetch",
-              "name": "Fetch",
-              "action": "fetch:plain",
-              "parameters": {
-                "url": "./template"
-              },
-              "backstage:permissions": {
-                "tags": ["one", "two"]
-              }
-            },
-            {
-              "id": "publish",
-              "name": "Publish to GitHub",
-              "action": "publish:github",
-              "parameters": {
-                "repoUrl": "${{ parameters.repoUrl }}"
-              },
-              "if": "${{ parameters.repoUrl }}"
-            }
-          ],
-          "output": {
-            "catalogInfoUrl": "${{ steps.publish.output.catalogInfoUrl }}"
-          }
+          "owner": "artist-relations-team"
         }
       }
     ],

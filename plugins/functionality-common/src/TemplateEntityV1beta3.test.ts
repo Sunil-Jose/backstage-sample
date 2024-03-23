@@ -1,6 +1,6 @@
 import { entityKindSchemaValidator } from '@backstage/catalog-model';
 import type {
-  TemplateEntityV1beta3,
+  FunctionalityEntityV1beta3,
   TemplateParametersV1beta3,
 } from './TemplateEntityV1beta3';
 import schema from './Template.v1beta3.schema.json';
@@ -8,7 +8,7 @@ import schema from './Template.v1beta3.schema.json';
 const validator = entityKindSchemaValidator(schema);
 
 describe('templateEntityV1beta3Validator', () => {
-  let entity: TemplateEntityV1beta3;
+  let entity: FunctionalityEntityV1beta3;
 
   beforeEach(() => {
     entity = {
