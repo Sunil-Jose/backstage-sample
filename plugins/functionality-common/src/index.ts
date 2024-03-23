@@ -8,7 +8,7 @@
 export {
   functionalityEntityV1beta3Validator,
   isFunctionalityEntityV1beta3,
-} from './TemplateEntityV1beta3';
+} from './FunctionalityEntityV1beta3';
 export type {
   FunctionalityEntityV1beta3,
-} from './TemplateEntityV1beta3';
+} from './FunctionalityEntityV1beta3';

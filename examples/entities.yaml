@@ -65,7 +65,7 @@ metadata:
 spec:
   owner: guests
 ---
-apiVersion: functionality.tw/v1beta3
+apiVersion: functionality.tw/v1alpha1
 kind: Functionality
 metadata:
   name: func1
@@ -73,7 +73,7 @@ spec:
   owner: guests
   components: serviceA
 ---
-apiVersion: functionality.tw/v1beta3
+apiVersion: functionality.tw/v1alpha1
 kind: Functionality
 metadata:
   name: func2

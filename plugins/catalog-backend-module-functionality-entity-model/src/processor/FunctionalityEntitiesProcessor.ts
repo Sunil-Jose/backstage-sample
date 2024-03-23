@@ -48,7 +48,7 @@ import {
       const selfRef = getCompoundEntityRef(entity);
   
       if (
-        entity.apiVersion === 'functionality.tw/v1beta3' &&
+        entity.apiVersion === 'functionality.tw/v1alpha1' &&
         entity.kind === 'Functionality'
       ) {
         const template = entity as FunctionalityEntityV1beta3;
