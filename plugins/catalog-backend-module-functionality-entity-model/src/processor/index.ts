@@ -1,0 +1,1 @@
+export { FunctionalityEntitiesProcessor } from './FunctionalityEntitiesProcessor';
