@@ -7,7 +7,7 @@ import {
   import schema from './Template.v1beta3.schema.json';
   
   /**
-   * Backstage catalog Template kind Entity. Templates are used by the Scaffolder
+   * Backstage catalog Functionality kind Entity. Functionalities are used by the Functionality
    * plugin to create new entities, such as Components.
    *
    * @public
@@ -16,47 +16,17 @@ import {
     /**
      * The apiVersion string of the TaskSpec.
      */
-    apiVersion: 'scaffolder.backstage.io/v1beta3';
+    apiVersion: 'functionality.tw/v1beta3';
     /**
      * The kind of the entity
      */
-    kind: 'Template';
+    kind: 'Functionality';
     /**
-     * The specification of the Template Entity
+     * The specification of the Functionality Entity
      */
     spec: {
       /**
-       * The type that the Template will create. For example service, website or library.
-       */
-      type: string;
-  
-      /**
-       * Template specific configuration of the presentation layer.
-       */
-      presentation?: TemplatePresentationV1beta3;
-  
-      /**
-       * Recovery strategy for the template
-       */
-      EXPERIMENTAL_recovery?: TemplateRecoveryV1beta3;
-  
-      /**
-       * This is a JSONSchema or an array of JSONSchema's which is used to render a form in the frontend
-       * to collect user input and validate it against that schema. This can then be used in the `steps` part below to template
-       * variables passed from the user into each action in the template.
-       */
-      parameters?: TemplateParametersV1beta3 | TemplateParametersV1beta3[];
-      /**
-       * A list of steps to be executed in sequence which are defined by the template. These steps are a list of the underlying
-       * javascript action and some optional input parameters that may or may not have been collected from the end user.
-       */
-      steps: Array<TemplateEntityStepV1beta3>;
-      /**
-       * The output is an object where template authors can pull out information from template actions and return them in a known standard way.
-       */
-      output?: { [name: string]: string };
-      /**
-       * The owner entityRef of the TemplateEntity
+       * The owner entityRef of the FunctionalityEntity
        */
       owner?: string;
     };
@@ -104,7 +74,7 @@ import {
   }
   
   /**
-   * Step that is part of a Template Entity.
+   * Step that is part of a Functionality Entity.
    *
    * @public
    */
@@ -156,5 +126,5 @@ import {
   export const isTemplateEntityV1beta3 = (
     entity: Entity,
   ): entity is TemplateEntityV1beta3 =>
-    entity.apiVersion === 'scaffolder.backstage.io/v1beta3' &&
-    entity.kind === 'Template';
+    entity.apiVersion === 'functionality.tw/v1beta3' &&
+    entity.kind === 'Functionality';
