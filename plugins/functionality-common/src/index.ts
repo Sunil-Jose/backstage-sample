@@ -6,9 +6,9 @@
 
 
 export {
-  functionalityEntityV1beta3Validator,
-  isFunctionalityEntityV1beta3,
-} from './FunctionalityEntityV1beta3';
+  functionalityEntityV1alpha1Validator,
+  isFunctionalityEntityV1alpha1,
+} from './FunctionalityEntityV1alpha1';
 export type {
-  FunctionalityEntityV1beta3,
-} from './FunctionalityEntityV1beta3';
+  FunctionalityEntityV1alpha1,
+} from './FunctionalityEntityV1alpha1';

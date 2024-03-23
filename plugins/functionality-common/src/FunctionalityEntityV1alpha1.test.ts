@@ -1,11 +1,11 @@
 import { entityKindSchemaValidator } from '@backstage/catalog-model';
-import type { FunctionalityEntityV1beta3 } from './FunctionalityEntityV1beta3';
-import schema from './Functionality.v1beta3.schema.json';
+import type { FunctionalityEntityV1alpha1 } from './FunctionalityEntityV1alpha1';
+import schema from './Functionality.v1alpha1.schema.json';
 
 const validator = entityKindSchemaValidator(schema);
 
 describe('templateEntityV1beta3Validator', () => {
-  let entity: FunctionalityEntityV1beta3;
+  let entity: FunctionalityEntityV1alpha1;
 
   beforeEach(() => {
     entity = {

@@ -14,8 +14,8 @@ import {
 } from '@backstage/plugin-catalog-node';
 import { LocationSpec } from '@backstage/plugin-catalog-common';
 import {
-  FunctionalityEntityV1beta3,
-  functionalityEntityV1beta3Validator,
+  FunctionalityEntityV1alpha1,
+  functionalityEntityV1alpha1Validator,
 } from '@internal/backstage-plugin-functionality-common';
 
 /**
@@ -28,7 +28,7 @@ export class FunctionalityEntitiesProcessor implements CatalogProcessor {
     return 'FunctionalityEntitiesProcessor';
   }
 
-  private readonly validators = [functionalityEntityV1beta3Validator];
+  private readonly validators = [functionalityEntityV1alpha1Validator];
 
   async validateEntityKind(entity: Entity): Promise<boolean> {
     for (const validator of this.validators) {
@@ -51,7 +51,7 @@ export class FunctionalityEntitiesProcessor implements CatalogProcessor {
       entity.apiVersion === 'functionality.tw/v1alpha1' &&
       entity.kind === 'Functionality'
     ) {
-      const template = entity as FunctionalityEntityV1beta3;
+      const template = entity as FunctionalityEntityV1alpha1;
 
       if (template.spec) {
         // Owner entity ref resolution

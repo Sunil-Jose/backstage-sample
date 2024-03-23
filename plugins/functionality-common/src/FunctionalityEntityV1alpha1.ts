@@ -3,7 +3,7 @@ import {
   entityKindSchemaValidator,
   KindValidator,
 } from '@backstage/catalog-model';
-import schema from './Functionality.v1beta3.schema.json';
+import schema from './Functionality.v1alpha1.schema.json';
 
 /**
  * Backstage catalog Functionality kind Entity. Functionalities are used by the Functionality
@@ -11,7 +11,7 @@ import schema from './Functionality.v1beta3.schema.json';
  *
  * @public
  */
-export interface FunctionalityEntityV1beta3 extends Entity {
+export interface FunctionalityEntityV1alpha1 extends Entity {
   /**
    * The apiVersion string of the TaskSpec.
    */
@@ -39,23 +39,22 @@ export interface FunctionalityEntityV1beta3 extends Entity {
 const validator = entityKindSchemaValidator(schema);
 
 /**
- * Entity data validator for {@link FunctionalityEntityV1beta3}.
+ * Entity data validator for {@link FunctionalityEntityV1alpha1}.
  *
  * @public
  */
-export const functionalityEntityV1beta3Validator: KindValidator = {
-  // TODO(freben): Emulate the old KindValidator until we fix that type
+export const functionalityEntityV1alpha1Validator: KindValidator = {
   async check(data: Entity) {
     return validator(data) === data;
   },
 };
 
 /**
- * Typeguard for filtering entities and ensuring v1beta3 entities
+ * Typeguard for filtering entities and ensuring v1alpha1 entities
  * @public
  */
-export const isFunctionalityEntityV1beta3 = (
+export const isFunctionalityEntityV1alpha1 = (
   entity: Entity,
-): entity is FunctionalityEntityV1beta3 =>
+): entity is FunctionalityEntityV1alpha1 =>
   entity.apiVersion === 'functionality.tw/v1alpha1' &&
   entity.kind === 'Functionality';
