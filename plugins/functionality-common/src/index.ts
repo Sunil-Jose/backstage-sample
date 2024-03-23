@@ -1,19 +1,20 @@
-/***/
 /**
- * Common functionalities for the functionality plugin.
+ * Common functionalities for the scaffolder, to be shared between scaffolder and scaffolder-backend plugin
  *
  * @packageDocumentation
  */
 
-/**
- * In this package you might for example declare types that are common
- * between the frontend and backend plugin packages.
- */
-export type CommonType = {
-  field: string;
-};
+export * from './TaskSpec';
 
-/**
- * Or you might declare some common constants.
- */
-export const COMMON_CONSTANT = 1;
+export {
+  templateEntityV1beta3Validator,
+  isTemplateEntityV1beta3,
+} from './TemplateEntityV1beta3';
+export type {
+  TemplatePresentationV1beta3,
+  TemplateEntityV1beta3,
+  TemplateEntityStepV1beta3,
+  TemplateParametersV1beta3,
+  TemplatePermissionsV1beta3,
+  TemplateRecoveryV1beta3,
+} from './TemplateEntityV1beta3';
