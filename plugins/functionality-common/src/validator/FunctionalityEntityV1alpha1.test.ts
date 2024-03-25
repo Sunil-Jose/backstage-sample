@@ -48,4 +48,14 @@ describe('FunctionalityEntityV1beta3Validator', () => {
     (entity as any).spec.owner = 5;
     expect(() => validator(entity)).toThrow(/owner/);
   });
+
+  it('accepts missing platform', async () => {
+    delete (entity as any).spec.platform;
+    expect(validator(entity)).toBe(entity);
+  });
+
+  it('rejects empty platform', async () => {
+    (entity as any).spec.platform = '';
+    expect(() => validator(entity)).toThrow(/platform/);
+  })
 });

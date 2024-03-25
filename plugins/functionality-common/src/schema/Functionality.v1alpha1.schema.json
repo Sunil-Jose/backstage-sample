@@ -16,7 +16,8 @@
       },
       "spec": {
         "owner": "artist-relations-team",
-        "components": "funcA"
+        "components": "funcA",
+        "platform": "platformA"
       }
     }
   ],
@@ -48,6 +49,11 @@
             "components": {
               "type": "string",
               "description": "The components that are part of implementing this functionality",
+              "minLength": 1
+            },
+            "platform": {
+              "type": "string",
+              "description": "The platform to which this functionality belongs to",
               "minLength": 1
             }
           }

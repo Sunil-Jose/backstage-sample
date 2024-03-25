@@ -6,6 +6,8 @@ import {
   RELATION_OWNER_OF,
   RELATION_PART_OF,
   RELATION_HAS_PART,
+  RELATION_CHILD_OF,
+  RELATION_PARENT_OF,
 } from '@backstage/catalog-model';
 import {
   CatalogProcessor,
@@ -114,10 +116,40 @@ export class FunctionalityEntitiesProcessor implements CatalogProcessor {
               target: selfRef,
             }),
           );
+
+          // components entity ref resolution
+          const platform = functionality.spec.platform;
+          if (platform) {
+            const platformEntityRef = parseEntityRef(platform, {
+              defaultKind: 'Platform',
+              defaultNamespace: selfRef.namespace,
+            });
+            emit(
+              processingResult.relation({
+                source: selfRef,
+                type: RELATION_CHILD_OF,
+                target: {
+                  kind: platformEntityRef.kind,
+                  namespace: platformEntityRef.namespace,
+                  name: platformEntityRef.name,
+                },
+              })
+            );
+            emit(
+              processingResult.relation({
+                source: {
+                  kind: platformEntityRef.kind,
+                  namespace: platformEntityRef.namespace,
+                  name: platformEntityRef.name,
+                },
+                type: RELATION_PARENT_OF,
+                target: selfRef,
+              }),
+            );
+          }
         }
       }
     }
-
     return entity;
   }
 }

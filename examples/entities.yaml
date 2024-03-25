@@ -71,6 +71,7 @@ metadata:
   name: func1
 spec:
   owner: guests
+  platform: platform1
   components: serviceA
 ---
 apiVersion: functionality.tw/v1alpha1
@@ -85,5 +86,6 @@ apiVersion: functionality.tw/v1alpha1
 kind: Platform
 metadata:
   name: platform1
+  title: Platform 1
 spec:
   owner: guests
