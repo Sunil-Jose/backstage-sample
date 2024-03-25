@@ -3,17 +3,17 @@ import {
   entityKindSchemaValidator,
   KindValidator,
 } from '@backstage/catalog-model';
-import schema from './Functionality.v1alpha1.schema.json';
+import schema from '../schema/Functionality.v1alpha1.schema.json';
 
 /**
  * Backstage catalog Functionality kind Entity. Functionalities are used by the Functionality
- * plugin to create new entities, such as Components.
+ * plugin to group together Components to that are involved in make a functionality possible.
  *
  * @public
  */
 export interface FunctionalityEntityV1alpha1 extends Entity {
   /**
-   * The apiVersion string of the TaskSpec.
+   * The apiVersion string of the Functionality.
    */
   apiVersion: 'functionality.tw/v1alpha1';
   /**

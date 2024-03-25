@@ -1,7 +1,7 @@
 {
   "$schema": "http://json-schema.org/draft-07/schema",
   "$id": "FunctionalityV1alpha1",
-  "description": "A Functionality is a representation of a ???",
+  "description": "A Functionality is a representation of a business function",
   "examples": [
     {
       "apiVersion": "functionality.tw/v1alpha1",

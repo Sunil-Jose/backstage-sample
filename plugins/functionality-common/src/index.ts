@@ -8,7 +8,7 @@
 export {
   functionalityEntityV1alpha1Validator,
   isFunctionalityEntityV1alpha1,
-} from './FunctionalityEntityV1alpha1';
+} from './validator/FunctionalityEntityV1alpha1';
 export type {
   FunctionalityEntityV1alpha1,
-} from './FunctionalityEntityV1alpha1';
+} from './validator/FunctionalityEntityV1alpha1';
