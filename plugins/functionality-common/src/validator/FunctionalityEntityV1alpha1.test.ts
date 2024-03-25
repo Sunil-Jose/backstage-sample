@@ -15,7 +15,10 @@ describe('FunctionalityEntityV1beta3Validator', () => {
         name: 'test',
       },
       spec: {
-        owner: 'team-b'
+        owner: 'team-b',
+        platform: 'platformA',
+        components: 'componentA',
+        functionality: 'functionalityA',
       },
     };
   });
@@ -57,5 +60,15 @@ describe('FunctionalityEntityV1beta3Validator', () => {
   it('rejects empty platform', async () => {
     (entity as any).spec.platform = '';
     expect(() => validator(entity)).toThrow(/platform/);
-  })
+  });
+
+  it('accepts missing functionality', async () => {
+    delete (entity as any).spec.functionality;
+    expect(validator(entity)).toBe(entity);
+  });
+
+  it('rejects empty functionality', async () => {
+    (entity as any).spec.functionality = '';
+    expect(() => validator(entity)).toThrow(/functionality/);
+  });
 });

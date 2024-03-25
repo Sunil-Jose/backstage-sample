@@ -38,6 +38,11 @@ export interface FunctionalityEntityV1alpha1 extends Entity {
      * The platform to which this Functionality belongs to
      */
     platform?: string;
+    
+    /**
+     * The functionality which is the parent of this
+     */
+    functionality?: string;
   };
 }
 

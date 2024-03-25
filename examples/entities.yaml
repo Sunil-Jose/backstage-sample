@@ -89,3 +89,12 @@ metadata:
   title: Platform 1
 spec:
   owner: guests
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Functionality
+metadata:
+  name: func3
+spec:
+  owner: guests
+  components: serviceA
+  functionality: func1
