@@ -51,11 +51,11 @@ export class FunctionalityEntitiesProcessor implements CatalogProcessor {
       entity.apiVersion === 'functionality.tw/v1alpha1' &&
       entity.kind === 'Functionality'
     ) {
-      const template = entity as FunctionalityEntityV1alpha1;
+      const functionality = entity as FunctionalityEntityV1alpha1;
 
-      if (template.spec) {
+      if (functionality.spec) {
         // Owner entity ref resolution
-        const target = template.spec.owner;
+        const target = functionality.spec.owner;
         if (target) {
           const ownerEntityRef = parseEntityRef(target, {
             defaultKind: 'Group',
@@ -86,7 +86,7 @@ export class FunctionalityEntitiesProcessor implements CatalogProcessor {
         }
 
         // components entity ref resolution
-        const component = template.spec.components;
+        const component = functionality.spec.components;
         if (component) {
           const componentEntityRef = parseEntityRef(component, {
             defaultKind: 'Component',
