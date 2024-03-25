@@ -1,0 +1,52 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "FunctionalityV1alpha1",
+    "description": "A Platform is a grouping of functionalities",
+    "examples": [
+      {
+        "apiVersion": "functionality.tw/v1alpha1",
+        "kind": "Platform",
+        "metadata": {
+          "name": "platformA",
+          "title": "Platform A",
+          "description": "Simple Platform",
+          "tags": [
+            "recommended"
+          ]
+        },
+        "spec": {
+          "owner": "artist-relations-team"
+        }
+      }
+    ],
+    "allOf": [
+      {
+        "$ref": "Entity"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "apiVersion": {
+            "enum": [
+              "functionality.tw/v1alpha1"
+            ]
+          },
+          "kind": {
+            "enum": [
+              "Platform"
+            ]
+          },
+          "spec": {
+            "type": "object",
+            "properties": {
+              "owner": {
+                "type": "string",
+                "description": "The user (or group) owner of the platform",
+                "minLength": 1
+              }
+            }
+          }
+        }
+      }
+    ]
+  }

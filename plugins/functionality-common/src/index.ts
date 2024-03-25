@@ -12,3 +12,11 @@ export {
 export type {
   FunctionalityEntityV1alpha1,
 } from './validator/FunctionalityEntityV1alpha1';
+
+export { 
+  platformEntityV1alpha1Validator,
+  isPlatformEntityV1alpha1 
+} from './validator/PlatformEntityV1alpha1';
+export type { 
+  PlatformEntityV1alpha1
+} from './validator/PlatformEntityV1alpha1';

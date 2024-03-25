@@ -80,3 +80,10 @@ metadata:
 spec:
   owner: guests
   components: serviceA
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Platform
+metadata:
+  name: platform1
+spec:
+  owner: guests
