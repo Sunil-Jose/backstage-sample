@@ -1,0 +1,51 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "FunctionalityV1alpha1",
+    "description": "A Component with mapping to functionalities",
+    "examples": [
+      {
+        "apiVersion": "backstage.io/v1alpha1",
+        "kind": "Component",
+        "metadata": {
+          "name": "componentA",
+          "title": "Component A",
+          "description": "Simple Component"
+        },
+        "spec": {
+            "functionalities": ["functionalityA"]
+        }
+      }
+    ],
+    "allOf": [
+      {
+        "$ref": "Entity"
+      },
+      {
+        "type": "object",
+        "properties": {
+          "apiVersion": {
+            "type": "string",
+            "minLength": 1
+          },
+          "kind": {
+            "enum": [
+              "Component"
+            ]
+          },
+          "spec": {
+            "type": "object",
+            "properties": {
+              "functionalities": {
+                "type": "array",
+                "items": {
+                    "type": "string",
+                    "description": "The functionalities this component helps implement",
+                    "minLength": 1
+                }
+              }
+            }
+          }
+        }
+      }
+    ]
+  }

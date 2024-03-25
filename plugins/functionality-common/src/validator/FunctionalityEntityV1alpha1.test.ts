@@ -17,7 +17,7 @@ describe('FunctionalityEntityV1beta3Validator', () => {
       spec: {
         owner: 'team-b',
         platform: 'platformA',
-        components: 'componentA',
+        components: ['componentA'],
         functionality: 'functionalityA',
       },
     };

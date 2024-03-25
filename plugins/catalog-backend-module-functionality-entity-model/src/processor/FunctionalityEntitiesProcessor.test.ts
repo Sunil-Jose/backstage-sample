@@ -8,7 +8,6 @@ const mockEntity: FunctionalityEntityV1alpha1 = {
   metadata: { name: 'n' },
   spec: {
     owner: 'o',
-    components: 'comp1'
   },
 };
 

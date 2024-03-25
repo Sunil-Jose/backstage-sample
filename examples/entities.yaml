@@ -51,6 +51,18 @@ spec:
   system: systemA
 ---
 apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: serviceB
+spec:
+  type: service
+  lifecycle: experimental
+  owner: guests
+  functionalities:
+    - func1
+    - func2
+---
+apiVersion: backstage.io/v1alpha1
 kind: System
 metadata:
   name: systemA
@@ -72,7 +84,6 @@ metadata:
 spec:
   owner: guests
   platform: platform1
-  components: serviceA
 ---
 apiVersion: functionality.tw/v1alpha1
 kind: Functionality
@@ -80,7 +91,6 @@ metadata:
   name: func2
 spec:
   owner: guests
-  components: serviceA
 ---
 apiVersion: functionality.tw/v1alpha1
 kind: Platform
@@ -96,5 +106,4 @@ metadata:
   name: func3
 spec:
   owner: guests
-  components: serviceA
   functionality: func1

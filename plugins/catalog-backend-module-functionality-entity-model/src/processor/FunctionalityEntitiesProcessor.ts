@@ -87,97 +87,66 @@ export class FunctionalityEntitiesProcessor implements CatalogProcessor {
           );
         }
 
-        // components entity ref resolution
-        const component = functionality.spec.components;
-        if (component) {
-          const componentEntityRef = parseEntityRef(component, {
-            defaultKind: 'Component',
+        // platform entity ref resolution
+        const platform = functionality.spec.platform;
+        if (platform) {
+          const platformEntityRef = parseEntityRef(platform, {
+            defaultKind: 'Platform',
             defaultNamespace: selfRef.namespace,
           });
           emit(
             processingResult.relation({
               source: selfRef,
-              type: RELATION_HAS_PART,
+              type: RELATION_CHILD_OF,
               target: {
-                kind: componentEntityRef.kind,
-                namespace: componentEntityRef.namespace,
-                name: componentEntityRef.name,
+                kind: platformEntityRef.kind,
+                namespace: platformEntityRef.namespace,
+                name: platformEntityRef.name,
               },
             })
           );
           emit(
             processingResult.relation({
               source: {
-                kind: componentEntityRef.kind,
-                namespace: componentEntityRef.namespace,
-                name: componentEntityRef.name,
+                kind: platformEntityRef.kind,
+                namespace: platformEntityRef.namespace,
+                name: platformEntityRef.name,
               },
-              type: RELATION_PART_OF,
+              type: RELATION_PARENT_OF,
               target: selfRef,
             }),
           );
+        }
 
-          // platform entity ref resolution
-          const platform = functionality.spec.platform;
-          if (platform) {
-            const platformEntityRef = parseEntityRef(platform, {
-              defaultKind: 'Platform',
-              defaultNamespace: selfRef.namespace,
-            });
-            emit(
-              processingResult.relation({
-                source: selfRef,
-                type: RELATION_CHILD_OF,
-                target: {
-                  kind: platformEntityRef.kind,
-                  namespace: platformEntityRef.namespace,
-                  name: platformEntityRef.name,
-                },
-              })
-            );
-            emit(
-              processingResult.relation({
-                source: {
-                  kind: platformEntityRef.kind,
-                  namespace: platformEntityRef.namespace,
-                  name: platformEntityRef.name,
-                },
-                type: RELATION_PARENT_OF,
-                target: selfRef,
-              }),
-            );
-          }
-
-          // functionality entity ref resolution
-          const parentFunctionality = functionality.spec.functionality;
-          if (parentFunctionality) {
-            const parentFunctionalityEntityRef = parseEntityRef(parentFunctionality, {
-              defaultKind: 'Functionality',
-              defaultNamespace: selfRef.namespace,
-            });
-            emit(
-              processingResult.relation({
-                source: selfRef,
-                type: RELATION_CHILD_OF,
-                target: {
-                  kind: parentFunctionalityEntityRef.kind,
-                  namespace: parentFunctionalityEntityRef.namespace,
-                  name: parentFunctionalityEntityRef.name,
-                },
-              })
-            );
-            emit(
-              processingResult.relation({
-                source: {
-                  kind: parentFunctionalityEntityRef.kind,
-                  namespace: parentFunctionalityEntityRef.namespace,
-                  name: parentFunctionalityEntityRef.name,
-                },
-                type: RELATION_PARENT_OF,
-                target: selfRef,
-              }),
-            );
-          } 
+        // functionality entity ref resolution
+        const parentFunctionality = functionality.spec.functionality;
+        if (parentFunctionality) {
+          const parentFunctionalityEntityRef = parseEntityRef(parentFunctionality, {
+            defaultKind: 'Functionality',
+            defaultNamespace: selfRef.namespace,
+          });
+          emit(
+            processingResult.relation({
+              source: selfRef,
+              type: RELATION_CHILD_OF,
+              target: {
+                kind: parentFunctionalityEntityRef.kind,
+                namespace: parentFunctionalityEntityRef.namespace,
+                name: parentFunctionalityEntityRef.name,
+              },
+            })
+          );
+          emit(
+            processingResult.relation({
+              source: {
+                kind: parentFunctionalityEntityRef.kind,
+                namespace: parentFunctionalityEntityRef.namespace,
+                name: parentFunctionalityEntityRef.name,
+              },
+              type: RELATION_PARENT_OF,
+              target: selfRef,
+            }),
+          );
         }
       }
     }

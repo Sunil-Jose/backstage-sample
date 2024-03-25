@@ -32,7 +32,7 @@ export interface FunctionalityEntityV1alpha1 extends Entity {
     /**
      * The components that are involved in implementing this functionality
      */
-    components?: string;
+    components?: Array<string>;
 
     /**
      * The platform to which this Functionality belongs to
