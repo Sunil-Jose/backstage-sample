@@ -1,5 +1,5 @@
 ---
-apiVersion: functionality.tw/v1alpha1
+apiVersion: capability.tw/v1alpha1
 kind: Platform
 metadata:
   name: viator-experiences
@@ -7,8 +7,8 @@ metadata:
 spec:
   owner: member-x
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Capability
 metadata:
   name: post-booking
   title: Post Booking
@@ -16,50 +16,50 @@ spec:
   owner: member-x
   platform: viator-experiences
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Capability
 metadata:
   name: pre-trip
   title: Pre-Trip
 spec:
   owner: member-x
-  functionality: post-booking
+  capability: post-booking
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Capability
 metadata:
   name: manage-my-bookings
   title: Manage My Bookings
 spec:
   owner: member-x
-  functionality: pre-trip
+  capability: pre-trip
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Capability
 metadata:
   name: payment
   title: Payment
 spec:
   owner: checkout
-  functionality: manage-my-bookings
+  capability: manage-my-bookings
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Capability
 metadata:
   name: cancellation
   title: Cancellation
 spec:
   owner: member-x
-  functionality: manage-my-bookings
+  capability: manage-my-bookings
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Capability
 metadata:
   name: amend
   title: Amend
 spec:
   owner: member-x
-  functionality: manage-my-bookings
+  capability: manage-my-bookings
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Component
@@ -69,7 +69,7 @@ spec:
   type: website
   lifecycle: production
   owner: guests
-  functionalities:
+  capabilities:
     - cancellation
     - amend
     - payment
@@ -82,7 +82,7 @@ spec:
   type: service
   lifecycle: production
   owner: member-x
-  functionalities:
+  capabilities:
     - amend
     - cancellation
     - payment
@@ -95,7 +95,7 @@ spec:
   type: service
   lifecycle: production
   owner: guests
-  functionalities:
+  capabilities:
     - payment
 ---
 apiVersion: backstage.io/v1alpha1
@@ -106,7 +106,7 @@ spec:
   type: service
   lifecycle: production
   owner: guests
-  functionalities:
+  capabilities:
     - payment
 ---
 apiVersion: backstage.io/v1alpha1
@@ -117,5 +117,5 @@ spec:
   type: website
   lifecycle: production
   owner: guests
-  functionalities:
+  capabilities:
     - cancellation

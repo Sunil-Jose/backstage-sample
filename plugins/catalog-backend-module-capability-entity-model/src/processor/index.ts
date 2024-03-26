@@ -1,0 +1,1 @@
+export { CapabilityEntitiesProcessor } from './CapabilityEntitiesProcessor';
