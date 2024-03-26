@@ -1,109 +1,121 @@
 ---
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-system
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: examples
-spec:
-  owner: guests
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: example-website
-spec:
-  type: website
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  providesApis: [example-grpc-api]
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: example-grpc-api
-spec:
-  type: grpc
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  definition: |
-    syntax = "proto3";
-
-    service Exampler {
-      rpc Example (ExampleMessage) returns (ExampleMessage) {};
-    }
-
-    message ExampleMessage {
-      string example = 1;
-    };
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: serviceA
-spec:
-  type: website
-  lifecycle: experimental
-  owner: guests
-  system: systemA
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: serviceB
-spec:
-  type: service
-  lifecycle: experimental
-  owner: guests
-  functionalities:
-    - func1
-    - func2
----
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: systemA
-spec:
-  owner: guests
-  domain: booking
----
-apiVersion: backstage.io/v1alpha1
-kind: Domain
-metadata:
-  name: booking
-spec:
-  owner: guests
----
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
-metadata:
-  name: func1
-spec:
-  owner: guests
-  platform: platform1
----
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
-metadata:
-  name: func2
-spec:
-  owner: guests
----
 apiVersion: functionality.tw/v1alpha1
 kind: Platform
 metadata:
-  name: platform1
-  title: Platform 1
+  name: viator-experiences
+  title: Viator Experiences
 spec:
-  owner: guests
+  owner: member-x
 ---
 apiVersion: functionality.tw/v1alpha1
 kind: Functionality
 metadata:
-  name: func3
+  name: post-booking
+  title: Post Booking
 spec:
+  owner: member-x
+  platform: viator-experiences
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Functionality
+metadata:
+  name: pre-trip
+  title: Pre-Trip
+spec:
+  owner: member-x
+  functionality: post-booking
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Functionality
+metadata:
+  name: manage-my-bookings
+  title: Manage My Bookings
+spec:
+  owner: member-x
+  functionality: pre-trip
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Functionality
+metadata:
+  name: payment
+  title: Payment
+spec:
+  owner: checkout
+  functionality: manage-my-bookings
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Functionality
+metadata:
+  name: cancellation
+  title: Cancellation
+spec:
+  owner: member-x
+  functionality: manage-my-bookings
+---
+apiVersion: functionality.tw/v1alpha1
+kind: Functionality
+metadata:
+  name: amend
+  title: Amend
+spec:
+  owner: member-x
+  functionality: manage-my-bookings
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orion
+spec:
+  type: website
+  lifecycle: production
   owner: guests
-  functionality: func1
+  functionalities:
+    - cancellation
+    - amend
+    - payment
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bookings
+spec:
+  type: service
+  lifecycle: production
+  owner: member-x
+  functionalities:
+    - amend
+    - cancellation
+    - payment
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payout-service
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  functionalities:
+    - payment
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: accounting-service
+spec:
+  type: service
+  lifecycle: production
+  owner: guests
+  functionalities:
+    - payment
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vrs
+spec:
+  type: website
+  lifecycle: production
+  owner: guests
+  functionalities:
+    - cancellation
