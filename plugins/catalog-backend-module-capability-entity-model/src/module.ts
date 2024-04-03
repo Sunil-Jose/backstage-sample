@@ -1,8 +1,6 @@
 import { createBackendModule } from '@backstage/backend-plugin-api';
 import { catalogProcessingExtensionPoint } from '@backstage/plugin-catalog-node/alpha';
-import { CapabilityEntitiesProcessor } from './processor';
-import { PlatformEntitiesProcessor } from './processor/PlatformEntitiesProcessor';
-import { CustomComponentEntitiesProcessor } from './processor/CustomComponentEntitiesProcessor';
+import { CapabilityEntitiesProcessor, PlatformEntitiesProcessor } from './processor';
 
 /**
  * Registers support for the capability specific entity model (e.g. the Capability
@@ -21,7 +19,6 @@ export const catalogModuleCapabilityEntityModel = createBackendModule({
       async init({ catalog }) {
         catalog.addProcessor(new CapabilityEntitiesProcessor());
         catalog.addProcessor(new PlatformEntitiesProcessor());
-        catalog.addProcessor(new CustomComponentEntitiesProcessor());
       },
     });
   },

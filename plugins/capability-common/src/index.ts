@@ -20,9 +20,3 @@ export {
 export type { 
   PlatformEntityV1alpha1
 } from './validator/PlatformEntityV1alpha1';
-
-export {
-  customComponentEntityValidator,
-  isCustomComponentEntityV1alpha1 
-} from './validator/CustomComponent';
-export type { CustomComponent } from './validator/CustomComponent';

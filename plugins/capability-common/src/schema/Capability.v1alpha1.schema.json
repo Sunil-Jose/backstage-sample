@@ -55,6 +55,14 @@
               "type": "string",
               "description": "The capability this is a child of",
               "minLength": 1
+            },
+            "components": {
+              "type": "array",
+              "items": {
+                "type": "string",
+                "description": "The components that are part of implementing the capability",
+                "minLength": 1
+              }
             }
           }
         }

@@ -148,6 +148,39 @@ export class CapabilityEntitiesProcessor implements CatalogProcessor {
             }),
           );
         }
+
+        // components entity ref resolution
+        const components = capability.spec.components;
+        if (components) {
+          for (const idx in components) {
+            const componentEntityRef = parseEntityRef(components[idx], {
+              defaultKind: 'Component',
+              defaultNamespace: selfRef.namespace,
+            });
+            emit(
+              processingResult.relation({
+                source: selfRef,
+                type: RELATION_HAS_PART,
+                target: {
+                  kind: componentEntityRef.kind,
+                  namespace: componentEntityRef.namespace,
+                  name: componentEntityRef.name,
+                },
+              })
+            );
+            emit(
+              processingResult.relation({
+                source: {
+                  kind: componentEntityRef.kind,
+                  namespace: componentEntityRef.namespace,
+                  name: componentEntityRef.name,
+                },
+                type: RELATION_PART_OF,
+                target: selfRef,
+              }),
+            );
+          }
+        }
       }
     }
     return entity;

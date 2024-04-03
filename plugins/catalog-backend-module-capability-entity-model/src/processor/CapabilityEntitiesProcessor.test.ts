@@ -5,9 +5,11 @@ const mockLocation = { type: 'a', target: 'b' };
 const mockEntity: CapabilityEntityV1alpha1 = {
   apiVersion: 'capability.tw/v1alpha1',
   kind: 'Capability',
-  metadata: { name: 'n' },
+  metadata: { name: 'cap1' },
   spec: {
-    owner: 'o',
+    owner: 'group1',
+    platform: 'platform1',
+    components: ['comp1', 'comp2'],
   },
 };
 
@@ -39,21 +41,37 @@ describe('CapabilityEntitiesProcessor', () => {
 
       await processor.postProcessEntity(mockEntity, mockLocation, emit);
 
-      expect(emit).toHaveBeenCalledTimes(4);
+      expect(emit).toHaveBeenCalledTimes(8);
       expect(emit).toHaveBeenCalledWith({
         type: 'relation',
         relation: {
-          source: { kind: 'Group', namespace: 'default', name: 'o' },
+          source: { kind: 'Group', namespace: 'default', name: 'group1' },
           type: 'ownerOf',
-          target: { kind: 'Capability', namespace: 'default', name: 'n' },
+          target: { kind: 'Capability', namespace: 'default', name: 'cap1' },
         },
       });
       expect(emit).toHaveBeenCalledWith({
         type: 'relation',
         relation: {
-          source: { kind: 'Capability', namespace: 'default', name: 'n' },
+          source: { kind: 'Capability', namespace: 'default', name: 'cap1' },
           type: 'ownedBy',
-          target: { kind: 'Group', namespace: 'default', name: 'o' },
+          target: { kind: 'Group', namespace: 'default', name: 'group1' },
+        },
+      });
+      expect(emit).toHaveBeenCalledWith({
+        type: 'relation',
+        relation: {
+          source: { kind: 'Platform', namespace: 'default', name: 'platform1' },
+          type: 'isParentOf',
+          target: { kind: 'Capability', namespace: 'default', name: 'cap1' },
+        },
+      });
+      expect(emit).toHaveBeenCalledWith({
+        type: 'relation',
+        relation: {
+          source: { kind: 'Capability', namespace: 'default', name: 'cap1' },
+          type: 'isChildOf',
+          target: { kind: 'Platform', namespace: 'default', name: 'platform1' },
         },
       });
       expect(emit).toHaveBeenCalledWith({
@@ -61,15 +79,31 @@ describe('CapabilityEntitiesProcessor', () => {
         relation: {
           source: { kind: 'Component', namespace: 'default', name: 'comp1' },
           type: 'isPartOf',
-          target: { kind: 'Capability', namespace: 'default', name: 'n' },
+          target: { kind: 'Capability', namespace: 'default', name: 'cap1' },
         },
       });
       expect(emit).toHaveBeenCalledWith({
         type: 'relation',
         relation: {
-          source: { kind: 'Capability', namespace: 'default', name: 'n' },
+          source: { kind: 'Capability', namespace: 'default', name: 'cap1' },
           type: 'hasPartOf',
           target: { kind: 'Component', namespace: 'default', name: 'comp1' },
+        },
+      });
+      expect(emit).toHaveBeenCalledWith({
+        type: 'relation',
+        relation: {
+          source: { kind: 'Component', namespace: 'default', name: 'comp2' },
+          type: 'isPartOf',
+          target: { kind: 'Capability', namespace: 'default', name: 'cap1' },
+        },
+      });
+      expect(emit).toHaveBeenCalledWith({
+        type: 'relation',
+        relation: {
+          source: { kind: 'Capability', namespace: 'default', name: 'cap1' },
+          type: 'hasPartOf',
+          target: { kind: 'Component', namespace: 'default', name: 'comp2' },
         },
       });
     });

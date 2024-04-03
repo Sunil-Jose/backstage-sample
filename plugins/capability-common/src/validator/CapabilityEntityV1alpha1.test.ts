@@ -71,4 +71,19 @@ describe('CapabilityEntityV1beta3Validator', () => {
     (entity as any).spec.capability = '';
     expect(() => validator(entity)).toThrow(/capability/);
   });
+
+  it('accepts missing components', async () => {
+    delete (entity as any).spec.components;
+    expect(validator(entity)).toBe(entity);
+  });
+
+  it('rejects empty components', async () => {
+    (entity as any).spec.components[0] = '';
+    expect(() => validator(entity)).toThrow(/components/);
+  });
+
+  it('rejects empty components in the middle of the array', async () =>{
+    (entity as any).spec.components[1] = '';
+    expect(() => validator(entity)).toThrow(/components/);
+  });
 });
