@@ -81,6 +81,11 @@ catalog:
     # Local example data, file locations are relative to the backend process, typically `packages/backend`
     - type: file
       target: ../../examples/entities.yaml
+    
+    - type: file
+      target: ../../examples/components.yaml
+      rules:
+        - allow: [Component]
 
     # Local example organizational data
     - type: file
