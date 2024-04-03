@@ -41,6 +41,7 @@ metadata:
   title: Payment
 spec:
   owner: checkout
+  type: sub-capability
   capability: manage-my-bookings
 ---
 apiVersion: capability.tw/v1alpha1
@@ -50,6 +51,7 @@ metadata:
   title: Cancellation
 spec:
   owner: member-x
+  type: sub-capability
   capability: manage-my-bookings
 ---
 apiVersion: capability.tw/v1alpha1
@@ -59,6 +61,7 @@ metadata:
   title: Amend
 spec:
   owner: member-x
+  type: sub-capability
   capability: manage-my-bookings
 ---
 apiVersion: backstage.io/v1alpha1
@@ -68,7 +71,7 @@ metadata:
 spec:
   type: website
   lifecycle: production
-  owner: guests
+  owner: member-x
   capabilities:
     - cancellation
     - amend
@@ -94,7 +97,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: guests
+  owner: member-x
   capabilities:
     - payment
 ---
@@ -105,7 +108,7 @@ metadata:
 spec:
   type: service
   lifecycle: production
-  owner: guests
+  owner: member-x
   capabilities:
     - payment
 ---
@@ -116,6 +119,6 @@ metadata:
 spec:
   type: website
   lifecycle: production
-  owner: guests
+  owner: member-x
   capabilities:
     - cancellation
