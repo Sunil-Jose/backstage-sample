@@ -8,6 +8,14 @@ spec:
   owner: member-x
 ---
 apiVersion: capability.tw/v1alpha1
+kind: Platform
+metadata:
+  name: engineering
+  title: Engineering
+spec:
+  owner: spectre
+---
+apiVersion: capability.tw/v1alpha1
 kind: Capability
 metadata:
   name: post-booking
@@ -75,3 +83,102 @@ spec:
   components:
     - bookings
     - orion
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: architecture
+  title: Architecture
+spec:
+  owner: spectre
+  platform: engineering
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: service-catalog
+  title: Service Catalog
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: tech-strategy
+  title: Tech Strategy
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: skeleton-templating
+  title: Skeleton Templating
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: distributed-communication
+  title: Distributed Communication
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: frontend-frameworks
+  title: Frontend Frameworks
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: governance
+  title: Governance
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: tech-radar
+  title: Tech Radar
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: persistance
+  title: Persistance
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: backend-frameworks
+  title: Backend Frameworks
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: serverless
+  title: Serverless
+spec:
+  owner: spectre
+  capability: architecture

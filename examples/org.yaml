@@ -25,3 +25,21 @@ metadata:
 spec:
   type: team
   children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: guidance
+  title: Guidance Team
+spec:
+  type: team
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: spectre
+  title: Spectre
+spec:
+  type: team
+  children: []
