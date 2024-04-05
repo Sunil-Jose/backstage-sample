@@ -43,3 +43,21 @@ metadata:
 spec:
   type: team
   children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: vortex
+  title: Vortex
+spec:
+  type: team
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: relevance
+  title: Relevance
+spec:
+  type: team
+  children: []

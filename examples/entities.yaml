@@ -16,6 +16,14 @@ spec:
   owner: spectre
 ---
 apiVersion: capability.tw/v1alpha1
+kind: Platform
+metadata:
+  name: marketplace-services
+  title: Marketplace Services
+spec:
+  owner: vortex
+---
+apiVersion: capability.tw/v1alpha1
 kind: Capability
 metadata:
   name: post-booking
@@ -83,6 +91,7 @@ spec:
   components:
     - bookings
     - orion
+    - demandproduct
 ---
 apiVersion: capability.tw/v1alpha1
 kind: Capability
@@ -182,3 +191,83 @@ metadata:
 spec:
   owner: spectre
   capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: merchandising
+  title: Merchandising
+spec:
+  owner: vortex
+  platform: marketplace-services
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: destinations
+  title: Destinations
+spec:
+  owner: vortex
+  capability: merchandising
+  components:
+    - demanddestination
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: poi
+  title: POIs
+spec:
+  owner: relevance
+  capability: merchandising
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: product-taxonomy
+  title: Product Taxonomy
+spec:
+  owner: vortex
+  capability: merchandising
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: search
+  title: Search
+spec:
+  owner: relevance
+  capability: merchandising
+  components:
+    - demandproduct
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: filtering
+  title: Filtering
+spec:
+  owner: relevance
+  capability: merchandising
+  components:
+    - demandproduct
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: product-comparison
+  title: Product Comparison
+spec:
+  capability: merchandising
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: product-reviews
+  title: Product Reviews
+spec:
+  owner: guidance
+  capability: merchandising
+  components:
+    - demandreview
+    - demandproduct
