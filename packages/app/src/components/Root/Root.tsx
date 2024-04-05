@@ -23,6 +23,7 @@ import {
   SidebarSpace,
   useSidebarOpenState,
   Link,
+  GroupIcon,
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
@@ -72,6 +73,7 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
+          <SidebarItem icon={GroupIcon} to="org-structure" text="Org Structure" />
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
         <SidebarItem icon={LibraryBooks} to="capability" text="Capability" />
