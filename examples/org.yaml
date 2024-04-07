@@ -15,7 +15,7 @@ metadata:
   title: Member X
 spec:
   type: team
-  children: []
+  children: [vortex, spectre]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
@@ -42,7 +42,7 @@ metadata:
   title: Spectre
 spec:
   type: team
-  children: []
+  children: [relevance, checkout]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
@@ -51,7 +51,7 @@ metadata:
   title: Vortex
 spec:
   type: team
-  children: []
+  children: [guidance]
 ---
 apiVersion: backstage.io/v1alpha1
 kind: Group
