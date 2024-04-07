@@ -1,15 +1,22 @@
-import { Content, ContentHeader, DependencyGraph, DependencyGraphTypes, Header, InfoCard, Page } from "@backstage/core-components";
+import {
+    Content,
+    ContentHeader,
+    DependencyGraph,
+    DependencyGraphTypes,
+    Header,
+    InfoCard,
+    Page
+} from "@backstage/core-components";
 import React, { useCallback } from "react";
 import { useApi, useRouteRef } from "@backstage/core-plugin-api";
 import { catalogApiRef, entityRouteRef } from "@backstage/plugin-catalog-react";
 import { useAsync } from 'react-use';
 import { DEFAULT_NAMESPACE, GroupEntity, parseEntityRef } from "@backstage/catalog-model";
-import { CustomRenderNode, EntityCustomNodeData } from "./CustomNode";
+import { EntityCustomNodeData, RenderCustomNode } from "./CustomNode";
 import { useNavigate } from "react-router-dom";
 
+
 export type CustomEntityNode = DependencyGraphTypes.DependencyNode<EntityCustomNodeData>;
-
-
 
 export function OrgTreeViewPage() {
 
@@ -22,24 +29,22 @@ export function OrgTreeViewPage() {
 
     const catalogEntityRoute = useRouteRef(entityRouteRef);
     const navigate = useNavigate();
-    const onNodeClick = useCallback(
+
+    const onCustomNodeClick = useCallback(
         (node: CustomEntityNode, _: React.MouseEvent) => {
-            console.log({node});
             const nodeEntityName = parseEntityRef({
                 kind: node.entity.kind,
                 namespace: node.entity.metadata.namespace || DEFAULT_NAMESPACE,
                 name: node.entity.metadata.name,
             });
-            console.log({nodeEntityName})
             const path = catalogEntityRoute({
                 kind: nodeEntityName.kind.toLocaleLowerCase('en-US'),
                 namespace: nodeEntityName.namespace.toLocaleLowerCase('en-US'),
                 name: nodeEntityName.name,
             });
-            console.log(path);
             navigate(path);
         },
-        [catalogEntityRoute],
+        [catalogEntityRoute, navigate],
     );
 
     if (!entitiesData.loading) {
@@ -52,7 +57,7 @@ export function OrgTreeViewPage() {
                     name: entity.metadata.name,
                     title: entity.metadata.title,
                 };
-                node.onClick = (event: React.MouseEvent<HTMLElement>) => onNodeClick(node, event);
+                node.onClick = (event: React.MouseEvent<HTMLElement>) => onCustomNodeClick(node, event);
 
                 nodes.push(node);
                 for (const child of entity.spec.children) {
@@ -71,7 +76,7 @@ export function OrgTreeViewPage() {
                     <DependencyGraph
                         nodes={nodes}
                         edges={edges}
-                        renderNode={CustomRenderNode}
+                        renderNode={RenderCustomNode}
                     />
                 </InfoCard>
             </Content>

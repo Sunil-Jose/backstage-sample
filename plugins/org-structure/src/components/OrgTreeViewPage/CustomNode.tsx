@@ -5,14 +5,6 @@ import classNames from 'classnames';
 import React, { MouseEventHandler, useLayoutEffect, useRef, useState } from 'react';
 import { DEFAULT_NAMESPACE, Entity } from '@backstage/catalog-model';
 
-export type EntityCustomNodeData = {
-    entity: Entity;
-    focused?: boolean;
-    color?: 'primary' | 'secondary' | 'default';
-    onClick?: MouseEventHandler;
-    name: string;
-    title?: string;
-};
 
 const useStyles = makeStyles(
     theme => ({
@@ -49,7 +41,16 @@ const useStyles = makeStyles(
     { name: 'PluginCatalogGraphCustomNode' },
 );
 
-export function CustomRenderNode({
+export type EntityCustomNodeData = {
+    entity: Entity;
+    focused?: boolean;
+    color?: 'primary' | 'secondary' | 'default';
+    onClick?: MouseEventHandler;
+    name: string;
+    title?: string;
+};
+
+export function RenderCustomNode({
     node: { id, entity, color = 'default', focused, onClick },
 }: DependencyGraphTypes.RenderNodeProps<EntityCustomNodeData>) {
     const classes = useStyles();
