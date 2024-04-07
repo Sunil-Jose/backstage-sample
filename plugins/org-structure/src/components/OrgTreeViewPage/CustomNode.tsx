@@ -91,6 +91,7 @@ export function RenderCustomNode({
 
     return (
         <g onClick={onClick} className={classNames(onClick && classes.clickable)}>
+            {entity.metadata.description ? <title>{entity.metadata.description}</title>:null}
             <rect
                 className={classNames(
                     classes.node,

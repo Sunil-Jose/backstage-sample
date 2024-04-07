@@ -31,6 +31,7 @@ kind: Group
 metadata:
   name: guidance
   title: Guidance Team
+  description: This is a sample description for guidance team
 spec:
   type: team
   children: []
