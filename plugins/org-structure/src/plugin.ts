@@ -16,7 +16,7 @@ export const OrgStructurePage = orgStructurePlugin.provide(
   createRoutableExtension({
     name: 'OrgStructurePage',
     component: () =>
-      import('./components/ExampleComponent').then(m => m.ExampleComponent),
+      import('./components/OrgTreeViewPage').then(m => m.OrgTreeViewPage),
     mountPoint: rootRouteRef,
   }),
 );
