@@ -36,10 +36,9 @@
   },
   "dependencies": {
     "@backstage/backend-common": "^0.21.4",
-    "@backstage/backend-plugin-api": "workspace:^",
-    "@backstage/catalog-model": "workspace:^",
-    "@backstage/plugin-catalog-common": "workspace:^",
-    "@backstage/plugin-catalog-node": "workspace:^",
+    "@backstage/catalog-model": "^1.4.5",
+    "@backstage/plugin-catalog-common": "^1.0.22",
+    "@backstage/plugin-catalog-node": "^1.11.0",
     "@internal/backstage-plugin-capability-common": "^0.1.0"
   },
   "devDependencies": {
