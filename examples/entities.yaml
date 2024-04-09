@@ -5,7 +5,7 @@ metadata:
   name: viator-experiences
   title: Viator Experiences
 spec:
-  owner: member-x
+  owner: group:member-x
 ---
 apiVersion: capability.tw/v1alpha1
 kind: Platform
@@ -21,7 +21,7 @@ metadata:
   name: marketplace-services
   title: Marketplace Services
 spec:
-  owner: vortex
+  owner: group:vortex
 ---
 apiVersion: capability.tw/v1alpha1
 kind: Capability
