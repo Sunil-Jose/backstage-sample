@@ -13,7 +13,7 @@ metadata:
   name: engineering
   title: Engineering
 spec:
-  owner: spectre
+  owner: user:brew
 ---
 apiVersion: capability.tw/v1alpha1
 kind: Platform

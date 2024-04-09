@@ -52,10 +52,8 @@ export class PlatformEntitiesProcessor implements CatalogProcessor {
         // Owner entity ref resolution
         const target = platform.spec.owner;
         if (target) {
-          const ownerEntityRef = parseEntityRef(target, {
-            defaultKind: 'Group',
-            defaultNamespace: selfRef.namespace,
-          });
+          const ownerEntityRef = parseEntityRef(target);
+          
           emit(
             processingResult.relation({
               source: selfRef,

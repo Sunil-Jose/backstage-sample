@@ -9,6 +9,14 @@ spec:
   memberOf: [member-x,checkout]
 ---
 apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: brew
+  title: Brew
+spec:
+  memberOf: [spectre]
+---
+apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
   name: member-x
