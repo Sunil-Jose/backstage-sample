@@ -16,7 +16,7 @@ import {
 } from '@backstage/plugin-catalog-node';
 import { LocationSpec } from '@backstage/plugin-catalog-common';
 import {
-  CapabilityEntityV1alpha1,
+  Capability,
   capabilityEntityV1alpha1Validator,
 } from '@internal/backstage-plugin-capability-common';
 
@@ -53,7 +53,7 @@ export class CapabilityEntitiesProcessor implements CatalogProcessor {
       entity.apiVersion === 'capability.tw/v1alpha1' &&
       entity.kind === 'Capability'
     ) {
-      const capability = entity as CapabilityEntityV1alpha1;
+      const capability = entity as Capability;
 
       if (capability.spec) {
         // Owner entity ref resolution
