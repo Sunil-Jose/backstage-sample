@@ -56,6 +56,7 @@ export function OrgTreeViewPage() {
                     entity: entity,
                     name: entity.metadata.name,
                     title: entity.metadata.title,
+                    color: "primary",
                 };
                 node.onClick = (event: React.MouseEvent<HTMLElement>) => onCustomNodeClick(node, event);
 
