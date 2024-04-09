@@ -1,0 +1,24 @@
+name: Yarn
+
+on: [push, pull_request]
+
+jobs:
+  test:
+    name: Test
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+            
+      - name: Install node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20.9.0'
+      
+      - name: Install yarn
+        run:
+          npm install -g yarn
+      
+      - name: Run tests
+        run: yarn test
+              
