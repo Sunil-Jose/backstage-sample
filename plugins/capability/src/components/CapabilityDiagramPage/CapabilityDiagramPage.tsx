@@ -7,7 +7,7 @@ import { DEFAULT_NAMESPACE, Entity, parseEntityRef } from "@backstage/catalog-mo
 import { useNavigate } from "react-router-dom";
 import { EntityCustomNodeData, RenderCustomNode } from "./CustomNode";
 import { Content, ContentHeader, DependencyGraph, DependencyGraphTypes, Header, InfoCard, Page, Progress, ResponseErrorPanel } from "@backstage/core-components";
-import { Capability } from "@internal/backstage-plugin-capability-common";
+import { CapabilityEntity } from "@internal/backstage-plugin-capability-common";
 
 
 export type CustomEntityNode = DependencyGraphTypes.DependencyNode<EntityCustomNodeData>;
@@ -77,7 +77,7 @@ export function CapabilityDiagramPage() {
 
                     edges.push({ from: entity.metadata.name, to: 'root' });
                 } else if (entity.kind === 'Capability') {
-                    const capabilityEntity = entity as Capability;
+                    const capabilityEntity = entity as CapabilityEntity;
 
                     const node: CustomEntityNode = {
                         id: entity.metadata.name,

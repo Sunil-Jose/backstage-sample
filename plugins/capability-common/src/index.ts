@@ -10,7 +10,7 @@ export {
   isCapabilityEntityV1alpha1,
 } from './validator/CapabilityEntityV1alpha1';
 export type {
-  CapabilityEntityV1alpha1 as Capability,
+  CapabilityEntityV1alpha1 as CapabilityEntity,
 } from './validator/CapabilityEntityV1alpha1';
 
 export { 
@@ -18,5 +18,5 @@ export {
   isPlatformEntityV1alpha1 
 } from './validator/PlatformEntityV1alpha1';
 export type { 
-  PlatformEntityV1alpha1 as Platform
+  PlatformEntityV1alpha1 as PlatformEntity
 } from './validator/PlatformEntityV1alpha1';

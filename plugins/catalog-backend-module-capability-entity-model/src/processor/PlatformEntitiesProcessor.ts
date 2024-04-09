@@ -11,7 +11,7 @@ import {
   processingResult,
 } from '@backstage/plugin-catalog-node';
 import { LocationSpec } from '@backstage/plugin-catalog-common';
-import { Platform, platformEntityV1alpha1Validator } from '@internal/backstage-plugin-capability-common';
+import { PlatformEntity, platformEntityV1alpha1Validator } from '@internal/backstage-plugin-capability-common';
 
 /**
  * Adds support for platform specific entity kinds to the catalog.
@@ -46,7 +46,7 @@ export class PlatformEntitiesProcessor implements CatalogProcessor {
       entity.apiVersion === 'capability.tw/v1alpha1' &&
       entity.kind === 'Platform'
     ) {
-      const platform = entity as Platform;
+      const platform = entity as PlatformEntity;
 
       if (platform.spec) {
         // Owner entity ref resolution
