@@ -1,1 +1,1 @@
-export { capabilityPlugin, CapabilityPage } from './plugin';
+export { capabilityPlugin, CapabilityViewPage } from './plugin';

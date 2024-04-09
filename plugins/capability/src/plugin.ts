@@ -13,11 +13,11 @@ export const capabilityPlugin = createPlugin({
   },
 });
 
-export const CapabilityPage = capabilityPlugin.provide(
+export const CapabilityViewPage = capabilityPlugin.provide(
   createRoutableExtension({
     name: 'CapabilityPage',
     component: () =>
-      import('./components/MyPage').then(m => m.MyPage),
+      import('./components/CapabilityDiagramPage').then(m => m.CapabilityDiagramPage),
     mountPoint: rootRouteRef,
   }),
 );
