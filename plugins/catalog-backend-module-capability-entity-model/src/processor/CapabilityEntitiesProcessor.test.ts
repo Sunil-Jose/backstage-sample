@@ -1,8 +1,8 @@
-import { CapabilityEntityV1alpha1 } from '@internal/backstage-plugin-capability-common';
+import { CapabilityEntity } from '@internal/backstage-plugin-capability-common';
 import { CapabilityEntitiesProcessor } from './CapabilityEntitiesProcessor';
 
 const mockLocation = { type: 'a', target: 'b' };
-const mockEntity: CapabilityEntityV1alpha1 = {
+const mockEntity: CapabilityEntity = {
   apiVersion: 'capability.tw/v1alpha1',
   kind: 'Capability',
   metadata: { name: 'cap1' },

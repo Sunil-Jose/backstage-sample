@@ -1,8 +1,8 @@
-import { PlatformEntityV1alpha1 } from "@internal/backstage-plugin-capability-common";
+import { PlatformEntity } from "@internal/backstage-plugin-capability-common";
 import { PlatformEntitiesProcessor } from "./PlatformEntitiesProcessor";
 
 const mockLocation = { type: 'a', target: 'b' };
-const mockEntity: PlatformEntityV1alpha1 = {
+const mockEntity: PlatformEntity = {
   apiVersion: 'capability.tw/v1alpha1',
   kind: 'Platform',
   metadata: { name: 'n' },
