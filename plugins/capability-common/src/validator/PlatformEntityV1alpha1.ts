@@ -13,7 +13,7 @@ import schema from '../schema/Platform.v1alpha1.schema.json';
  */
 export interface PlatformEntityV1alpha1 extends Entity {
   /**
-   * The apiVersion string of the TaskSpec.
+   * The apiVersion string of the Platform.
    */
   apiVersion: 'capability.tw/v1alpha1';
   /**
