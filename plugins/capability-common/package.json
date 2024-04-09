@@ -45,8 +45,6 @@
     }
   },
   "dependencies": {
-    "@backstage/catalog-model": "workspace:^",
-    "@backstage/plugin-permission-common": "workspace:^",
-    "@backstage/types": "workspace:^"
+    "@backstage/catalog-model": "^1.4.5"
   }
 }
