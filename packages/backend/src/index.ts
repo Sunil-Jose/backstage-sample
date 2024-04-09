@@ -37,7 +37,7 @@ backend.add(
 backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
-backend.add(import('@internal/backstage-plugin-functionality-backend'));
-backend.add(import('@internal/backstage-plugin-catalog-backend-module-functionality-entity-model'))
+backend.add(import('@internal/backstage-plugin-capability-backend'));
+backend.add(import('@internal/backstage-plugin-catalog-backend-module-capability-entity-model'))
 
 backend.start();

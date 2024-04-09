@@ -3,15 +3,70 @@
 apiVersion: backstage.io/v1alpha1
 kind: User
 metadata:
-  name: guest
+  name: leo
+  title: Leonardo
 spec:
-  memberOf: [guests]
+  memberOf: [member-x,checkout]
 ---
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-group
+apiVersion: backstage.io/v1alpha1
+kind: User
+metadata:
+  name: brew
+  title: Brew
+spec:
+  memberOf: [spectre]
+---
 apiVersion: backstage.io/v1alpha1
 kind: Group
 metadata:
-  name: guests
+  name: member-x
+  title: Member X
+spec:
+  type: team
+  children: [vortex, spectre]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: checkout
+  title: Checkout
+spec:
+  type: team
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: guidance
+  title: Guidance Team
+  description: This is a sample description for guidance team
+spec:
+  type: team
+  children: []
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: spectre
+  title: Spectre
+spec:
+  type: team
+  children: [relevance, checkout]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: vortex
+  title: Vortex
+spec:
+  type: team
+  children: [guidance]
+---
+apiVersion: backstage.io/v1alpha1
+kind: Group
+metadata:
+  name: relevance
+  title: Relevance
 spec:
   type: team
   children: []

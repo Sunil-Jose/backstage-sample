@@ -1,0 +1,71 @@
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: orion
+spec:
+  type: website
+  lifecycle: production
+  owner: member-x
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: bookings
+spec:
+  type: service
+  lifecycle: production
+  owner: member-x
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: payout-service
+spec:
+  type: service
+  lifecycle: production
+  owner: member-x
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: accounting-service
+spec:
+  type: service
+  lifecycle: production
+  owner: member-x
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: vrs
+spec:
+  type: website
+  lifecycle: production
+  owner: member-x
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demandreview
+spec:
+  type: service
+  lifecycle: production
+  owner: spectre
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demandproduct
+spec:
+  type: service
+  lifecycle: production
+  owner: spectre
+---
+apiVersion: backstage.io/v1alpha1
+kind: Component
+metadata:
+  name: demanddestination
+spec:
+  type: service
+  lifecycle: production
+  owner: spectre

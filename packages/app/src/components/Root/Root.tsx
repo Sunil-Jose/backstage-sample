@@ -23,9 +23,11 @@ import {
   SidebarSpace,
   useSidebarOpenState,
   Link,
+  GroupIcon,
 } from '@backstage/core-components';
 import MenuIcon from '@material-ui/icons/Menu';
 import SearchIcon from '@material-ui/icons/Search';
+import AddCircleOutline from '@material-ui/icons/AddCircleOutline';
 
 const useSidebarLogoStyles = makeStyles({
   root: {
@@ -72,9 +74,11 @@ export const Root = ({ children }: PropsWithChildren<{}>) => (
         {/* End global nav */}
         <SidebarDivider />
         <SidebarScrollWrapper>
+          <SidebarItem icon={GroupIcon} to="org-structure" text="Org Structure" />
+          <SidebarItem icon={AddCircleOutline} to="capabilities" text="Capabilities" />
           <SidebarItem icon={MapIcon} to="tech-radar" text="Tech Radar" />
         </SidebarScrollWrapper>
-        <SidebarItem icon={LibraryBooks} to="functionality" text="Functionality" />
+        <SidebarItem icon={LibraryBooks} to="capability" text="Capability" />
       </SidebarGroup>
       <SidebarSpace />
       <SidebarDivider />

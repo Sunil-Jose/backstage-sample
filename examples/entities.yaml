@@ -1,109 +1,273 @@
 ---
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-system
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: examples
-spec:
-  owner: guests
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-component
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: example-website
-spec:
-  type: website
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  providesApis: [example-grpc-api]
----
-# https://backstage.io/docs/features/software-catalog/descriptor-format#kind-api
-apiVersion: backstage.io/v1alpha1
-kind: API
-metadata:
-  name: example-grpc-api
-spec:
-  type: grpc
-  lifecycle: experimental
-  owner: guests
-  system: examples
-  definition: |
-    syntax = "proto3";
-
-    service Exampler {
-      rpc Example (ExampleMessage) returns (ExampleMessage) {};
-    }
-
-    message ExampleMessage {
-      string example = 1;
-    };
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: serviceA
-spec:
-  type: website
-  lifecycle: experimental
-  owner: guests
-  system: systemA
----
-apiVersion: backstage.io/v1alpha1
-kind: Component
-metadata:
-  name: serviceB
-spec:
-  type: service
-  lifecycle: experimental
-  owner: guests
-  functionalities:
-    - func1
-    - func2
----
-apiVersion: backstage.io/v1alpha1
-kind: System
-metadata:
-  name: systemA
-spec:
-  owner: guests
-  domain: booking
----
-apiVersion: backstage.io/v1alpha1
-kind: Domain
-metadata:
-  name: booking
-spec:
-  owner: guests
----
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
-metadata:
-  name: func1
-spec:
-  owner: guests
-  platform: platform1
----
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
-metadata:
-  name: func2
-spec:
-  owner: guests
----
-apiVersion: functionality.tw/v1alpha1
+apiVersion: capability.tw/v1alpha1
 kind: Platform
 metadata:
-  name: platform1
-  title: Platform 1
+  name: viator-experiences
+  title: Viator Experiences
 spec:
-  owner: guests
+  owner: group:member-x
 ---
-apiVersion: functionality.tw/v1alpha1
-kind: Functionality
+apiVersion: capability.tw/v1alpha1
+kind: Platform
 metadata:
-  name: func3
+  name: engineering
+  title: Engineering
 spec:
-  owner: guests
-  functionality: func1
+  owner: user:brew
+---
+apiVersion: capability.tw/v1alpha1
+kind: Platform
+metadata:
+  name: marketplace-services
+  title: Marketplace Services
+spec:
+  owner: group:vortex
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: post-booking
+  title: Post Booking
+spec:
+  owner: member-x
+  platform: viator-experiences
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: pre-trip
+  title: Pre-Trip
+spec:
+  owner: member-x
+  capability: post-booking
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: manage-my-bookings
+  title: Manage My Bookings
+spec:
+  owner: member-x
+  capability: pre-trip
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: payment
+  title: Payment
+spec:
+  owner: checkout
+  type: sub-capability
+  capability: manage-my-bookings
+  components: 
+    - orion
+    - bookings
+    - accounting-service
+    - payout-service
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: cancellation
+  title: Cancellation
+spec:
+  owner: member-x
+  type: sub-capability
+  capability: manage-my-bookings
+  components:
+    - orion
+    - bookings
+    - vrs
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: amend
+  title: Amend
+spec:
+  owner: member-x
+  type: sub-capability
+  capability: manage-my-bookings
+  components:
+    - bookings
+    - orion
+    - demandproduct
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: architecture
+  title: Architecture
+spec:
+  owner: spectre
+  platform: engineering
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: service-catalog
+  title: Service Catalog
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: tech-strategy
+  title: Tech Strategy
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: skeleton-templating
+  title: Skeleton Templating
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: distributed-communication
+  title: Distributed Communication
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: frontend-frameworks
+  title: Frontend Frameworks
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: governance
+  title: Governance
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: tech-radar
+  title: Tech Radar
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: persistance
+  title: Persistance
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: backend-frameworks
+  title: Backend Frameworks
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: serverless
+  title: Serverless
+spec:
+  owner: spectre
+  capability: architecture
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: merchandising
+  title: Merchandising
+spec:
+  owner: vortex
+  platform: marketplace-services
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: destinations
+  title: Destinations
+spec:
+  owner: vortex
+  capability: merchandising
+  components:
+    - demanddestination
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: poi
+  title: POIs
+spec:
+  owner: relevance
+  capability: merchandising
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: product-taxonomy
+  title: Product Taxonomy
+spec:
+  owner: vortex
+  capability: merchandising
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: search
+  title: Search
+spec:
+  owner: relevance
+  capability: merchandising
+  components:
+    - demandproduct
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: filtering
+  title: Filtering
+spec:
+  owner: relevance
+  capability: merchandising
+  components:
+    - demandproduct
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: product-comparison
+  title: Product Comparison
+spec:
+  capability: merchandising
+---
+apiVersion: capability.tw/v1alpha1
+kind: Capability
+metadata:
+  name: product-reviews
+  title: Product Reviews
+spec:
+  owner: guidance
+  capability: merchandising
+  components:
+    - demandreview
+    - demandproduct

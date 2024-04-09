@@ -1,0 +1,51 @@
+{
+  "name": "@internal/backstage-plugin-catalog-backend-module-capability-entity-model",
+  "description": "The capability-entity-model backend module for the catalog plugin.",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "license": "Apache-2.0",
+  "private": true,
+  "publishConfig": {
+    "access": "public",
+    "main": "dist/index.cjs.js",
+    "types": "dist/index.d.ts"
+  },
+  "backstage": {
+    "role": "backend-plugin-module"
+  },
+  "exports": {
+    ".": "./src/index.ts",
+    "./package.json": "./package.json"
+  },
+  "scripts": {
+    "start": "backstage-cli package start",
+    "build": "backstage-cli package build",
+    "lint": "backstage-cli package lint",
+    "test": "backstage-cli package test",
+    "clean": "backstage-cli package clean",
+    "prepack": "backstage-cli package prepack",
+    "postpack": "backstage-cli package postpack"
+  },
+  "typesVersions": {
+    "*": {
+      "package.json": [
+        "package.json"
+      ]
+    }
+  },
+  "dependencies": {
+    "@backstage/backend-common": "^0.21.4",
+    "@backstage/catalog-model": "^1.4.5",
+    "@backstage/plugin-catalog-common": "^1.0.22",
+    "@backstage/plugin-catalog-node": "^1.11.0",
+    "@internal/backstage-plugin-capability-common": "^0.1.0"
+  },
+  "devDependencies": {
+    "@backstage/backend-test-utils": "^0.3.4",
+    "@backstage/cli": "^0.26.0"
+  },
+  "files": [
+    "dist"
+  ]
+}

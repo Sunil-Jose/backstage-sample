@@ -1,0 +1,1 @@
+export { CapabilityDiagramPage } from './CapabilityDiagramPage';
