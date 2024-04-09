@@ -61,7 +61,6 @@ export function CapabilityDiagramPage() {
     if (entitiesData) {
         if (entitiesData.items !== undefined) {
             const entities = entitiesData.items as Entity[];
-            console.log(entities);
             for (const entity of entities) {
                 if (entity.kind === 'Platform') {
                     const node: CustomEntityNode = {
