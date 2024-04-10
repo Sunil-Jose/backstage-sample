@@ -86,6 +86,11 @@ catalog:
       target: ../../examples/components.yaml
       rules:
         - allow: [Component]
+    
+    - type: file
+      target: ../../examples/platforms.yaml
+      rules:
+        - allow: [Platform]
 
     # Local example organizational data
     - type: file

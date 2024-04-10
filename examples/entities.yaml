@@ -1,29 +1,5 @@
 ---
 apiVersion: capability.tw/v1alpha1
-kind: Platform
-metadata:
-  name: viator-experiences
-  title: Viator Experiences
-spec:
-  owner: group:member-x
----
-apiVersion: capability.tw/v1alpha1
-kind: Platform
-metadata:
-  name: engineering
-  title: Engineering
-spec:
-  owner: user:brew
----
-apiVersion: capability.tw/v1alpha1
-kind: Platform
-metadata:
-  name: marketplace-services
-  title: Marketplace Services
-spec:
-  owner: group:vortex
----
-apiVersion: capability.tw/v1alpha1
 kind: Capability
 metadata:
   name: post-booking
