@@ -105,9 +105,8 @@ export function CapabilityDiagramPage() {
 
     return (
         <Page themeId="tool">
-            <Header title="Org Structure" />
+            <Header title="Capabilities" />
             <Content>
-                <ContentHeader title="XYZ Org Structure" />
                 <InfoCard>
                     <DependencyGraph
                         //No idea why BOTTOM_TOP approach works instead of TOP_BOTTOM. Have to check.
