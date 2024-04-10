@@ -6,7 +6,7 @@ import { useAsync } from 'react-use';
 import { DEFAULT_NAMESPACE, Entity, parseEntityRef } from "@backstage/catalog-model";
 import { useNavigate } from "react-router-dom";
 import { EntityCustomNodeData, RenderCustomNode } from "./CustomNode";
-import { Content, ContentHeader, DependencyGraph, DependencyGraphTypes, Header, InfoCard, Page, Progress, ResponseErrorPanel } from "@backstage/core-components";
+import { Content, DependencyGraph, DependencyGraphTypes, Header, InfoCard, Page, Progress, ResponseErrorPanel } from "@backstage/core-components";
 import { CapabilityEntity } from "@internal/backstage-plugin-capability-common";
 
 
