@@ -27,6 +27,7 @@
     },
     {
       "type": "object",
+      "required": ["spec"],
       "properties": {
         "apiVersion": {
           "enum": [
@@ -40,6 +41,7 @@
         },
         "spec": {
           "type": "object",
+          "required": ["owner"],
           "properties": {
             "owner": {
               "type": "string",

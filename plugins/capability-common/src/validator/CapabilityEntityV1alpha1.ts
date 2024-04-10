@@ -23,11 +23,11 @@ export interface CapabilityEntityV1alpha1 extends Entity {
   /**
    * The specification of the Capability Entity
    */
-  spec?: {
+  spec: {
     /**
      * The owner entityRef of the CapabilityEntity
      */
-    owner?: string;
+    owner: string;
 
     /**
      * The components that are involved in implementing this capability

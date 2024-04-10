@@ -37,9 +37,14 @@ describe('CapabilityEntityV1beta3Validator', () => {
     expect(validator(entity)).toBe(false);
   });
 
-  it('accepts missing owner', async () => {
+  it('rejects missing spec', async () => {
+    delete (entity as any).spec;
+    expect(() => validator(entity)).toThrow(/spec/); 
+  });
+
+  it('rejects missing owner', async () => {
     delete (entity as any).spec.owner;
-    expect(validator(entity)).toBe(entity);
+    expect(() => validator(entity)).toThrow(/owner/);
   });
 
   it('rejects empty owner', async () => {

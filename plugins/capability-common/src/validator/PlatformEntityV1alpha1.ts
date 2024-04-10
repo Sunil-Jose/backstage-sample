@@ -23,11 +23,11 @@ export interface PlatformEntityV1alpha1 extends Entity {
   /**
    * The specification of the Platform Entity
    */
-  spec?: {
+  spec: {
     /**
      * The owner entityRef of the Platform Entity
      */
-    owner?: string;
+    owner: string;
   };
 }
 
