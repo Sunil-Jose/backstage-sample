@@ -1,11 +1,11 @@
 import React from 'react';
 import { createDevApp } from '@backstage/dev-utils';
-import { capabilityPlugin, CapabilityPage } from '../src/plugin';
+import { capabilityPlugin, CapabilityViewPage } from '../src/plugin';
 
 createDevApp()
   .registerPlugin(capabilityPlugin)
   .addPage({
-    element: <CapabilityPage />,
+    element: <CapabilityViewPage />,
     title: 'Root Page',
     path: '/capability',
   })
