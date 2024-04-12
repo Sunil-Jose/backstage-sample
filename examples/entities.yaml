@@ -234,6 +234,7 @@ metadata:
   name: product-comparison
   title: Product Comparison
 spec:
+  owner: member-x
   capability: merchandising
 ---
 apiVersion: capability.tw/v1alpha1
