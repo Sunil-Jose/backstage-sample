@@ -15,10 +15,8 @@ import {
   processingResult,
 } from '@backstage/plugin-catalog-node';
 import { LocationSpec } from '@backstage/plugin-catalog-common';
-import {
-  CapabilityEntity,
-  capabilityEntityV1alpha1Validator,
-} from '@internal/backstage-plugin-capability-common';
+import {capabilityEntityV1alpha1Validator, CapabilityEntity} from "@personal/capability-common";
+
 
 /**
  * Adds support for capability specific entity kinds to the catalog.

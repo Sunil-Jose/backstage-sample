@@ -32,6 +32,7 @@
     "@material-ui/core": "^4.9.13",
     "@material-ui/icons": "^4.9.1",
     "@material-ui/lab": "4.0.0-alpha.61",
+    "@personal/capability-common": "1.2.3",
     "react-router": "^6.3.0",
     "react-router-dom": "^6.22.3",
     "react-use": "^17.5.0"

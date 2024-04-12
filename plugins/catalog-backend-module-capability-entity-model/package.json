@@ -39,7 +39,7 @@
     "@backstage/catalog-model": "^1.4.5",
     "@backstage/plugin-catalog-common": "^1.0.22",
     "@backstage/plugin-catalog-node": "^1.11.0",
-    "@internal/backstage-plugin-capability-common": "^0.1.0"
+    "@personal/capability-common": "1.2.3"
   },
   "devDependencies": {
     "@backstage/backend-test-utils": "^0.3.4",

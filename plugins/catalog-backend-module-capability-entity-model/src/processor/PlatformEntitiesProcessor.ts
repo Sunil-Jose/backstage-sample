@@ -11,7 +11,7 @@ import {
   processingResult,
 } from '@backstage/plugin-catalog-node';
 import { LocationSpec } from '@backstage/plugin-catalog-common';
-import { PlatformEntity, platformEntityV1alpha1Validator } from '@internal/backstage-plugin-capability-common';
+import { PlatformEntity, platformEntityV1alpha1Validator } from '@personal/capability-common';
 
 /**
  * Adds support for platform specific entity kinds to the catalog.
