@@ -38,6 +38,6 @@ backend.add(import('@backstage/plugin-search-backend/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-catalog/alpha'));
 backend.add(import('@backstage/plugin-search-backend-module-techdocs/alpha'));
 backend.add(import('@internal/backstage-plugin-capability-backend'));
-backend.add(import('@internal/backstage-plugin-catalog-backend-module-capability-entity-model'))
+backend.add(import('@personal/catalog-backend-module-capability-entity-model'));
 
 backend.start();
