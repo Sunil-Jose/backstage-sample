@@ -1,9 +1,10 @@
-import { DependencyGraphTypes } from '@backstage/core-components';
-import { humanizeEntityRef } from '@backstage/plugin-catalog-react';
+import { DependencyGraphTypes, Link } from '@backstage/core-components';
+import { entityRouteRef, humanizeEntityRef } from '@backstage/plugin-catalog-react';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
 import React, { MouseEventHandler, useLayoutEffect, useRef, useState } from 'react';
-import { Entity } from '@backstage/catalog-model';
+import { DEFAULT_NAMESPACE, Entity, parseEntityRef } from '@backstage/catalog-model';
+import { useRouteRef } from '@backstage/core-plugin-api';
 
 
 const useStyles = makeStyles(
@@ -34,8 +35,10 @@ const useStyles = makeStyles(
                 fontWeight: 'bold',
             },
         },
-        clickable: {
-            cursor: 'pointer',
+        link: {
+            '&:hover': {
+                textDecoration: 'none',
+            }
         },
     }),
     { name: 'PluginCatalogGraphCustomNode' },
@@ -45,12 +48,11 @@ export type EntityCustomNodeData = {
     entity?: Entity;
     focused?: boolean;
     color?: 'primary' | 'secondary' | 'default';
-    onClick?: MouseEventHandler;
     title?: string;
 };
 
 export function RenderCustomNode({
-    node: { id, entity, color = 'default', focused, onClick, title },
+    node: { id, entity, color = 'default', focused, title },
 }: DependencyGraphTypes.RenderNodeProps<EntityCustomNodeData>) {
     const classes = useStyles();
     const [width, setWidth] = useState(0);
@@ -77,10 +79,58 @@ export function RenderCustomNode({
     const paddedWidth = paddedIconWidth + width + padding * 2;
     const paddedHeight = height + padding * 2;
 
-    const displayTitle = title ??(entity ? humanizeEntityRef(entity): id);
+    const displayTitle = title ?? (entity ? humanizeEntityRef(entity) : id);
+    if (entity) {
+        const ref = parseEntityRef({
+            kind: entity.kind,
+            namespace: entity.metadata.namespace ? entity.metadata.namespace : DEFAULT_NAMESPACE,
+            name: entity.metadata.name
+        });
+        const catalogEntityRef = useRouteRef(entityRouteRef);
+
+        return (
+            <g>
+                {entity.metadata.description ? <title>{entity.metadata.description}</title> : null}
+                <rect
+                    className={classNames(
+                        classes.node,
+                        color === 'primary' && 'primary',
+                        color === 'secondary' && 'secondary',
+                    )}
+                    width={paddedWidth}
+                    height={paddedHeight}
+                    rx={10}
+                />
+                <Link
+                    to={catalogEntityRef({
+                        name: ref.name,
+                        kind: ref.kind,
+                        namespace: ref.namespace,
+                    })}
+                    className={classes.link}
+                >
+                    <text
+                        ref={idRef}
+                        className={classNames(
+                            classes.text,
+                            focused && 'focused',
+                            color === 'primary' && 'primary',
+                            color === 'secondary' && 'secondary',
+                        )}
+                        y={paddedHeight / 2}
+                        x={paddedIconWidth + (width + padding * 2) / 2}
+                        textAnchor="middle"
+                        alignmentBaseline="middle"
+                    >
+                        {displayTitle}
+                    </text>
+                </Link>
+            </g>
+        );
+    }
+
     return (
-        <g onClick={onClick} className={classNames(onClick && classes.clickable)}>
-            {entity && entity.metadata.description ? <title>{entity.metadata.description}</title>:null}
+        <g>
             <rect
                 className={classNames(
                     classes.node,
@@ -95,7 +145,6 @@ export function RenderCustomNode({
                 ref={idRef}
                 className={classNames(
                     classes.text,
-                    focused && 'focused',
                     color === 'primary' && 'primary',
                     color === 'secondary' && 'secondary',
                 )}
