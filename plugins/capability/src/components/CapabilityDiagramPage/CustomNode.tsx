@@ -2,7 +2,7 @@ import { DependencyGraphTypes, Link } from '@backstage/core-components';
 import { entityRouteRef, humanizeEntityRef } from '@backstage/plugin-catalog-react';
 import { makeStyles } from '@material-ui/core/styles';
 import classNames from 'classnames';
-import React, { MouseEventHandler, useLayoutEffect, useRef, useState } from 'react';
+import React, { useLayoutEffect, useRef, useState } from 'react';
 import { DEFAULT_NAMESPACE, Entity, parseEntityRef } from '@backstage/catalog-model';
 import { useRouteRef } from '@backstage/core-plugin-api';
 
