@@ -42,7 +42,7 @@
     "@internal/backstage-plugin-org-structure": "^0.1.0",
     "@material-ui/core": "^4.12.2",
     "@material-ui/icons": "^4.9.1",
-    "@personal/capability": "1.4.0",
+    "@personal/capability": "1.4.6",
     "history": "^5.0.0",
     "react": "^18.0.2",
     "react-dom": "^18.0.2",
